@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.UserRoleRelationDao">
+    <select id="getPermissionList" resultType="com.demo.entity.Permission">
+        select p.* from user u, role r, permission p, user_role ur, role_permission rp where
+            u.id = #{userId} and
+            u.id = ur.user_id and
+            ur.role_id = r.id and
+            r.id = rp.role_id and
+            rp.permission_id = p.id
+    </select>
+</mapper>
